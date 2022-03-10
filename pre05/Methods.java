@@ -16,22 +16,24 @@ public class Methods {
   }
 
   public static int ack(int m, int n){
-    if (m==0) {
-      return n+1;
-    
-        if (n==0){
-          m=m-1;
-          n = 1;
-          return ack(m,n); 
+    int result = 0;
+    if (m==0){
+      result=n+1;
+    } else {
+        if(n==0){
+          result= ack (m-1,1);
         } else {
-          return -1;
-        }
-      
+            result = ack(m-1, ack(m, n-1));
+          }
     }
-  }
+    
+        
+    return result;
+  }   
+  
   
   public static void main(String[]arugs){
-    System.out.println(ack (2,0));
+    System.out.println(ack (3,3));
   }
   
 }  
